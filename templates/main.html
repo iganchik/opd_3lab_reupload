@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор квадратных уравнений</title>
+</head>
+<body>
+    <h2>Введите коэффициенты a, b, c</h2>
+    <form method="POST">
+        <input type="text" name="a" placeholder="Введите a" required>
+        <input type="text" name="b" placeholder="Введите b" required>
+        <input type="text" name="c" placeholder="Введите c" required>
+        <button type="submit">Рассчитать</button>
+    </form>
+
+    {% if roots %}
+        <h3>Корни уравнения: {{ roots }}</h3>
+    {% endif %}
+
+    {% if error %}
+        <h3 style="color:red;">{{ error }}</h3>
+    {% endif %}
+</body>
+</html>
