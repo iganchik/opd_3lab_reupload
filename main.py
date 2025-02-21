@@ -14,16 +14,19 @@ def index():
             b = float(request.form['b'])
             c = float(request.form['c'])
 
-            discriminant = b ** 2 - 4 * a * c
-            if discriminant > 0:
-                root1 = (-b + math.sqrt(discriminant)) / (2 * a)
-                root2 = (-b - math.sqrt(discriminant)) / (2 * a)
-                roots = (root1, root2)
-            elif discriminant == 0:
-                root = -b / (2 * a)
-                roots = (root,)
+            if a <= 0:
+                error = "Коэффициент 'a' не может быть меньше или равен нулю"
             else:
-                error = "Уравнение не имеет действительных корней"
+                discriminant = b ** 2 - 4 * a * c
+                if discriminant > 0:
+                    root1 = (-b + math.sqrt(discriminant)) / (2 * a)
+                    root2 = (-b - math.sqrt(discriminant)) / (2 * a)
+                    roots = (root1, root2)
+                elif discriminant == 0:
+                    root = -b / (2 * a)
+                    roots = (root,)
+                else:
+                    error = "Уравнение не имеет действительных корней"
         except ValueError:
             error = "Введите числовые значения для a, b, c"
         except ZeroDivisionError:
